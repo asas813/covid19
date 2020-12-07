@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Covid19 Chart</title>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+</head>
+<body>
+    <div id="container" style="margin-top: 20px;"></div>
+    <script>
+        Highcharts.chart('container', {{ chart|safe }});
+    </script>
+</body>
+</html>
