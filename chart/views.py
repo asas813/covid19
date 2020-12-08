@@ -27,7 +27,7 @@ def pr_data():
     # 4-2) 필요한 특정 열을 columns 로 지정하여 일반 데이터프레임으로 변경
     covid.columns = covid.columns.to_list()
     
-    # 5) 인구 십만명당 확진자 비율 계산하기 위하여 인구 데이터 적재
+    # 5) 인구 백만명당 확진자 비율 계산하기 위하여 인구 데이터 적재
     pop = pd.read_csv('https://datahub.io/JohnSnowLabs/population-figures-by-country/r/population-figures-by-country-csv.csv')
     
     # 6) 인구 데이터에서 분석 대상 국가와 2016년도의 인구 데이터만 추출
@@ -45,7 +45,7 @@ def pr_data():
     pop = pop.to_dict()  # 사전으로 변환
     populations = pop['Year_2016']  # 필요한 인구 데이터만 사전 형태로 추출
 
-    # 7) 인구 십만명당 확진자 비율 계산
+    # 7) 인구 백만명당 확진자 비율 계산
     percapita = covid.copy()  # 확진자 데이터프레임 복사
     for country in percapita.columns.to_list():
         percapita[country] = (percapita[country] / populations[country] * 1000000).round(2)
