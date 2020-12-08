@@ -48,7 +48,7 @@ def pr_data():
     # 7) 인구 십만명당 확진자 비율 계산
     percapita = covid.copy()  # 확진자 데이터프레임 복사
     for country in percapita.columns.to_list():
-        percapita[country] = (percapita[country] / populations[country] * 100000).round(2)
+        percapita[country] = (percapita[country] / populations[country] * 1000000).round(2)
     
     # 8) 인구 비율 대비 확진자 데이터프레임 반환
     return percapita
@@ -86,7 +86,7 @@ def make_chart(my_data):
         },
         'yAxis': [{   # y축 데이터 (확진자 비율)
             'labels': {   # y축 데이터 포맷 및 스타일 설정
-                'format': '{value} 건/십만 명',
+                'format': '{value} 건/백만 명',
                 'style': {'color': 'blue'}
             }, 'title': {
                 'text': '누적 비율',  # 축 이름 및 스타일 설정
